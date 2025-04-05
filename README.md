@@ -1,16 +1,38 @@
-## Hi there 👋
+#include <iostream>
+#include <vector>
+#include <string>
 
-<!--
-**nishka-techwriter/nishka-techwriter** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
+class GitHubProfile {
+public:
+    GitHubProfile(std::string uname, std::string name, std::string lang, std::vector<std::string> stack, std::string focus)
+        : username(uname), name(name), language(lang), stack(stack), focus(focus) {}
 
-Here are some ideas to get you started:
+    void about() const {
+        std::cout << "Привет! Меня зовут " << name << ", на GitHub я известен как " << username << "." << std::endl;
+        std::cout << "Я более 10 лет занимаюсь технической документацией и обожаю делиться знаниями." << std::endl;
+        std::cout << "Этот аккаунт — для демо-проектов, тестовых решений и идей, которые я использую в своих докладах." << std::endl;
+        std::cout << "Мой основной стек для решения прикладных задач документирования: ";
+        for (size_t i = 0; i < stack.size(); ++i) {
+            std::cout << stack[i];
+            if (i < stack.size() - 1) std::cout << ", ";
+        }
+        std::cout << "." << std::endl;
+        std::cout << "Основная работа это обеспечение " << focus << " проектов." << std::endl;
+        std::cout << "Заглядывайте в репозитории — может, найдёте что-то полезное или вдохновляющее." << std::endl;
+    }
 
-- 🔭 I’m currently working on ...
-- 🌱 I’m currently learning ...
-- 👯 I’m looking to collaborate on ...
-- 🤔 I’m looking for help with ...
-- 💬 Ask me about ...
-- 📫 How to reach me: ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
--->
+private:
+    std::string username;
+    std::string name;
+    std::string language;
+    std::vector<std::string> stack;
+    std::string focus;
+};
+
+int main() {
+    system("chcp 65001");
+    std::vector<std::string> stack = {"Java", "JS", "TS", "Phyton", "CSS"};
+    GitHubProfile profile("Nishka", "Макс", "Русский", stack, "DocOps");
+    profile.about();
+    return 0;
+}
